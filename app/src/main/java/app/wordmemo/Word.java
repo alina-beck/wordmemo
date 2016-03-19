@@ -12,7 +12,7 @@ public class Word {
     private Calendar dueDate;
 
     public Word (String o, String t) {
-        this.id = count++;
+        this.id = ++count;
         this.original = o;
         this.translation = t;
 
