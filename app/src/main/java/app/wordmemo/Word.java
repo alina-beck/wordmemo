@@ -1,15 +1,26 @@
 package app.wordmemo;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class Word {
 
     private static int count = 0;
 
-    private final int id = count++;
+    private final int id;
     private String original;
     private String translation;
-    private Date dueDate;
+    private Calendar dueDate;
+
+    public Word (String o, String t) {
+        this.id = count++;
+        this.original = o;
+        this.translation = t;
+
+        Calendar tmpDate = Calendar.getInstance();  // today
+        tmpDate.add(Calendar.DATE, 1);              // tomorrow
+
+        this.dueDate = tmpDate;
+    }
 
     public int getId() {
         return id;
@@ -31,11 +42,11 @@ public class Word {
         this.translation = translation;
     }
 
-    public Date getDueDate() {
+    public Calendar getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(Calendar dueDate) {
         this.dueDate = dueDate;
     }
 }
