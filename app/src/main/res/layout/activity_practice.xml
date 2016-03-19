@@ -9,6 +9,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="app.wordmemo.PracticeActivity">
 
-    <include layout="@layout/content_practice"/>
+    <ViewFlipper
+        android:id="@+id/practiceViewFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/content_practice_input"/>
+        <include layout="@layout/content_practice_result"/>
+    </ViewFlipper>
+
+
 
 </RelativeLayout>

@@ -16,15 +16,19 @@
         android:layout_marginTop="100dp"
         android:background="@color/colorPrimary"/>
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="TranslatedWord"
         android:textSize="32sp"
-        android:hint="Your translation"/>
+        android:padding="20dp"
+        android:layout_marginTop="100dp"
+        android:background="@color/colorPrimary"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OK"/>
+        android:text="Weiter"
+        android:onClick="changeView"/>
 
 </LinearLayout>
