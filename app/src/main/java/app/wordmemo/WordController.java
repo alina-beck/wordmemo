@@ -25,7 +25,7 @@ public class WordController {
         for (Word word : this.wordList) {
             compareVal = today.compareTo(word.getDueDate());
 
-            if (compareVal <= 0) { // word.dueDate is today or before today -> word is due
+            if (compareVal >= 0) { // word.dueDate is today or before today -> word is due
                 dueWords.add(word);
             }
         }

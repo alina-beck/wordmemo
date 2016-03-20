@@ -27,7 +27,7 @@ public class WordControllerTest {
         Calendar today = Calendar.getInstance();
 
         for (Word word : dueList) {
-            assertTrue(today.compareTo(word.getDueDate()) <= 0); // today or before today
+            assertTrue(today.compareTo(word.getDueDate()) >= 0); // today or before today
         }
     }
 }
