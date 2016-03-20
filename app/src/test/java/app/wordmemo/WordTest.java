@@ -25,9 +25,4 @@ public class WordTest {
         assertTrue(idWord2 < idWord3);
         assertTrue(idWord1 == idWord2 - 1);
     }
-
-    @Test
-    public void initial_dueDate_should_be_tomorrow () {
-
-    }
 }

@@ -11,6 +11,9 @@ public class Word {
     private String translation;
     private Calendar dueDate;
 
+    /**
+        Standard way of creating new words. Automatic dueDate calculation.
+    */
     public Word (String o, String t) {
         this.id = ++count;
         this.original = o;
@@ -20,6 +23,16 @@ public class Word {
         tmpDate.add(Calendar.DATE, 1);              // tomorrow
 
         this.dueDate = tmpDate;
+    }
+
+    /**
+        Alternative word creation. dueDate is given by parameter.
+    */
+    public Word (String o, String t, Calendar d) {
+        this.id = ++count;
+        this.original = o;
+        this.translation = t;
+        this.dueDate = d;
     }
 
     public int getId() {

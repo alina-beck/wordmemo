@@ -1,6 +1,7 @@
 package app.wordmemo;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class MockData {
@@ -24,6 +25,13 @@ public class MockData {
         newData.add(new Word("Tisch",  "bord"));
         newData.add(new Word("sehen",  "se"));
         newData.add(new Word("ich",    "jag"));
+
+        // adding some words that are due
+        Calendar past = Calendar.getInstance();
+        past.add(Calendar.DATE, -3);
+
+        newData.add(new Word("gestern", "igår", past));
+        newData.add(new Word("Dienstag", "tisdag", past));
 
         return newData;
     }
