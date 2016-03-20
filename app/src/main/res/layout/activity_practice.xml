@@ -13,8 +13,9 @@
         android:id="@+id/practiceViewFlipper"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <include layout="@layout/content_practice_input"/>
-        <include layout="@layout/content_practice_result"/>
+        <include layout="@layout/content_practice_input" android:id="@+id/practiceInput"/>
+        <include layout="@layout/content_practice_right" android:id="@+id/practiceRight"/>
+        <include layout="@layout/content_practice_wrong" android:id="@+id/practiceWrong"/>
     </ViewFlipper>
 
 
