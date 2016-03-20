@@ -39,6 +39,7 @@ public class PracticeActivity extends AppCompatActivity {
 
         boolean isTranslationRight = userTranslation.equalsIgnoreCase(validTranslation);
 
+        dueWords.remove(currentDueWord);
         changeView(isTranslationRight);
     }
 
