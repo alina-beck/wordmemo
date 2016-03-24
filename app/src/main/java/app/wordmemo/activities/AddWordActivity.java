@@ -1,7 +1,9 @@
-package app.wordmemo;
+package app.wordmemo.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import app.wordmemo.R;
 
 public class AddWordActivity extends AppCompatActivity {
 

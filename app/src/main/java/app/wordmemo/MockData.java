@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import app.wordmemo.models.Word;
+
 public class MockData {
 
     private List<Word> data;

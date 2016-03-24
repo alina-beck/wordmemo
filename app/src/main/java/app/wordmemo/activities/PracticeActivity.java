@@ -1,4 +1,4 @@
-package app.wordmemo;
+package app.wordmemo.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import android.widget.ViewFlipper;
 
 import java.util.List;
 import java.util.Random;
+
+import app.wordmemo.MockData;
+import app.wordmemo.R;
+import app.wordmemo.managers.WordDAO;
+import app.wordmemo.models.Word;
 
 public class PracticeActivity extends AppCompatActivity {
 
@@ -21,8 +26,8 @@ public class PracticeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice);
 
-        WordController wordController = new WordController();
-        this.dueWords = wordController.getDueWords();
+        MockData mockData = new MockData();
+        this.dueWords = mockData.getData();
         this.originalDueWordView = (TextView) findViewById(R.id.originalDueWord);
         setCurrentDueWord();
     }

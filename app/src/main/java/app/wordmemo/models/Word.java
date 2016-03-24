@@ -1,4 +1,4 @@
-package app.wordmemo;
+package app.wordmemo.models;
 
 import java.util.Calendar;
 
