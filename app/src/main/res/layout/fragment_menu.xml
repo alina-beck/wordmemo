@@ -1,0 +1,21 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.MenuFragment">
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:text="Start Practice"
+        android:onClick="startPractice"
+        />
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:text="Add Words"
+        />
+
+</LinearLayout>
