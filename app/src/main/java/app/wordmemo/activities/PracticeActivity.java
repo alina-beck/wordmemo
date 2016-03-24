@@ -12,7 +12,6 @@ import java.util.Random;
 
 import app.wordmemo.MockData;
 import app.wordmemo.R;
-import app.wordmemo.managers.WordDAO;
 import app.wordmemo.models.Word;
 
 public class PracticeActivity extends AppCompatActivity {

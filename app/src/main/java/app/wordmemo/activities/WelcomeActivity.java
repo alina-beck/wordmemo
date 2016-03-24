@@ -31,4 +31,9 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PracticeActivity.class);
         startActivity(intent);
     }
+
+    public void startAddWord(View view) {
+        Intent intent = new Intent(this, AddWordActivity.class);
+        startActivity(intent);
+    }
 }
