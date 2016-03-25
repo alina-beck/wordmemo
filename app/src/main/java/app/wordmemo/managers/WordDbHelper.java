@@ -14,7 +14,7 @@ public class WordDbHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_ORIGINAL = "original";
     public static final String COLUMN_TRANSLATION = "translation";
-    public static final String COLUMN_DUEDATE = "due date";
+    public static final String COLUMN_DUEDATE = "duedate";
 
     //database creation SQL syntax
     private static final String CREATE_DATABASE = "create table " + TABLE_WORDS +
@@ -33,8 +33,9 @@ public class WordDbHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade (SQLiteDatabase db, int oldVersion, int newVersion) {
-
+    public void onUpgrade (SQLiteDatabase database, int oldVersion, int newVersion) {
+        database.execSQL("drop table if exists " + TABLE_WORDS);
+        onCreate(database);
     }
 
 }
