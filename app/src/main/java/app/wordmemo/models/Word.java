@@ -1,8 +1,13 @@
 package app.wordmemo.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Calendar;
 
-public class Word {
+import app.wordmemo.utils.DateUtil;
+
+public class Word implements Parcelable {
 
     private static int count = 0;
 
@@ -34,6 +39,38 @@ public class Word {
         this.translation = t;
         this.dueDate = d;
     }
+
+    /**
+        Parcel constructor
+     */
+    private Word (Parcel in) {
+        this.id = in.readInt();
+        this.original = in.readString();
+        this.translation = in.readString();
+        this.dueDate = DateUtil.formatDate(in.readInt());
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(original);
+        dest.writeString(translation);
+        dest.writeInt(DateUtil.formatDate(dueDate));
+    }
+
+    public static final Parcelable.Creator<Word> CREATOR = new Parcelable.Creator<Word>() {
+        public Word createFromParcel (Parcel in) {
+            return new Word(in);
+        }
+        public Word[] newArray(int size) {
+            return new Word[size];
+        }
+    };
 
     public int getId() {
         return id;
