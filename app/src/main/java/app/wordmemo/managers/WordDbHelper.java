@@ -11,14 +11,14 @@ public class WordDbHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_WORDS = "words";
 
-    public static final String COLUMN_ID = "id";
+    public static final String COLUMN_ID = "_id";
     public static final String COLUMN_ORIGINAL = "original";
     public static final String COLUMN_TRANSLATION = "translation";
     public static final String COLUMN_DUEDATE = "due date";
 
     //database creation SQL syntax
     private static final String CREATE_DATABASE = "create table " + TABLE_WORDS +
-            "(" + COLUMN_ID + " integer primary key, "
+            "(" + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_ORIGINAL + " text not null, "
             + COLUMN_TRANSLATION + " text not null, "
             + COLUMN_DUEDATE + " integer not null);";

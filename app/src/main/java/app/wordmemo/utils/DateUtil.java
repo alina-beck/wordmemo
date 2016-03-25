@@ -4,6 +4,10 @@ import java.util.Calendar;
 
 public abstract class DateUtil {
 
+    public static int getTodayAsInt () {
+        return formatDate(Calendar.getInstance());
+    }
+
     public static int formatDate(Calendar calendar) {
         String year = Integer.toString(calendar.get(Calendar.YEAR));
         int monthInt = calendar.get(Calendar.MONTH);
