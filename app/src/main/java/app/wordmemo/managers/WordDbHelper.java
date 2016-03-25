@@ -21,7 +21,7 @@ public class WordDbHelper extends SQLiteOpenHelper {
             "(" + COLUMN_ID + " integer primary key, "
             + COLUMN_ORIGINAL + " text not null, "
             + COLUMN_TRANSLATION + " text not null, "
-            + COLUMN_DUEDATE + " text not null);";
+            + COLUMN_DUEDATE + " integer not null);";
 
     public WordDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
