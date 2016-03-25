@@ -9,40 +9,26 @@ import app.wordmemo.utils.DateUtil;
 
 public class Word implements Parcelable {
 
-    private static int count = 0;
-
     private final int id;
     private String original;
     private String translation;
     private Calendar dueDate;
 
-    /**
-        Standard way of creating new words. Automatic dueDate calculation.
-    */
-    public Word (String o, String t) {
-        this.id = ++count;
-        this.original = o;
-        this.translation = t;
+    public Word (String original, String translation) {
+        this(-1, original, translation, null);
 
         Calendar tmpDate = Calendar.getInstance();  // today
         tmpDate.add(Calendar.DATE, 1);              // tomorrow
-
         this.dueDate = tmpDate;
     }
 
-    /**
-        Alternative word creation. dueDate is given by parameter.
-    */
-    public Word (String o, String t, Calendar d) {
-        this.id = ++count;
-        this.original = o;
-        this.translation = t;
-        this.dueDate = d;
+    public Word (int id, String original, String translation, Calendar cal) {
+        this.id = id;
+        this.original = original;
+        this.translation = translation;
+        this.dueDate = cal;
     }
 
-    /**
-        Parcel constructor
-     */
     private Word (Parcel in) {
         this.id = in.readInt();
         this.original = in.readString();

@@ -32,8 +32,8 @@ public class MockData {
         Calendar past = Calendar.getInstance();
         past.add(Calendar.DATE, -3);
 
-        newData.add(new Word("gestern", "igår", past));
-        newData.add(new Word("Dienstag", "tisdag", past));
+        newData.add(new Word(-1, "gestern", "igår", past));
+        newData.add(new Word(-1, "Dienstag", "tisdag", past));
 
         return newData;
     }
