@@ -43,6 +43,7 @@ public class WordDAO {
         ContentValues values = new ContentValues();
         values.put(WordDbHelper.COLUMN_ORIGINAL, word.getOriginal());
         values.put(WordDbHelper.COLUMN_TRANSLATION, word.getTranslation());
+        values.put(WordDbHelper.COLUMN_LEARNGROUP, word.getLearnGroup());
         values.put(WordDbHelper.COLUMN_DUEDATE, DateUtil.formatDate(word.getDueDate()));
 
         long result = wordDatabase.insert(WordDbHelper.TABLE_WORDS, null, values);
@@ -72,9 +73,10 @@ public class WordDAO {
         int id = cursor.getInt(0);
         String original = cursor.getString(1);
         String translation = cursor.getString(2);
-        Calendar dueDate = DateUtil.formatDate(cursor.getInt(3));
+        int learnGroup = cursor.getInt(3);
+        Calendar dueDate = DateUtil.formatDate(cursor.getInt(4));
 
-        return new Word (id, original, translation, dueDate);
+        return new Word (id, original, translation, learnGroup, dueDate);
     }
 
 }

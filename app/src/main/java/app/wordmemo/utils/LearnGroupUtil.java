@@ -10,7 +10,7 @@ public abstract class LearnGroupUtil {
     private static final int GROUP_4 = 10;
     private static final int GROUP_5 = 20;
 
-    public Calendar calculateDueDate (int group) {
+    public static Calendar calculateDueDate (int group) {
         int increaseDays;
 
         switch (group) {

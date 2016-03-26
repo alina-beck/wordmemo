@@ -14,6 +14,7 @@ public class WordDbHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_ORIGINAL = "original";
     public static final String COLUMN_TRANSLATION = "translation";
+    public static final String COLUMN_LEARNGROUP = "learngroup";
     public static final String COLUMN_DUEDATE = "duedate";
 
     //database creation SQL syntax
@@ -21,6 +22,7 @@ public class WordDbHelper extends SQLiteOpenHelper {
             "(" + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_ORIGINAL + " text not null, "
             + COLUMN_TRANSLATION + " text not null, "
+            + COLUMN_LEARNGROUP + " integer not null, "
             + COLUMN_DUEDATE + " integer not null);";
 
     public WordDbHelper(Context context) {
