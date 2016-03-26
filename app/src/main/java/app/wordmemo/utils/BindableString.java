@@ -8,8 +8,6 @@ import android.text.TextWatcher;
 import android.util.Pair;
 import android.widget.EditText;
 
-import java.util.Objects;
-
 import app.wordmemo.R;
 
 public class BindableString extends BaseObservable {
@@ -20,7 +18,7 @@ public class BindableString extends BaseObservable {
     }
 
     public void set(String value) {
-        if (!Objects.equals(this.value, value)) {
+        if (!this.value.equals(value)) {
             this.value = value;
             notifyChange();
         }
@@ -31,12 +29,12 @@ public class BindableString extends BaseObservable {
     }
 
     @BindingConversion
-    public static String convertBindableToString (BindableString bindableString) {
+    public static String convertBindableToString(BindableString bindableString) {
         return bindableString.get();
     }
 
     @BindingAdapter({"app:binding"})
-    public static void bindEditText (EditText view, final BindableString bindableString) {
+    public static void bindEditText(EditText view, final BindableString bindableString) {
         Pair<BindableString, TextWatcher> pair = (Pair) view.getTag(R.id.bound_observable);
         if (pair == null || pair.first != bindableString) {
             if (pair != null) {
