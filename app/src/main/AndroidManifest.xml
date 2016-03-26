@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.PracticeActivity" />
-        <activity android:name=".activities.AddWordActivity"></activity>
+        <activity android:name=".activities.AddWordActivity" />
     </application>
 
 </manifest>

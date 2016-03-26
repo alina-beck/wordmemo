@@ -16,7 +16,7 @@ public class BindableString extends BaseObservable {
     private String value;
 
     public String get() {
-        return value != null ? value : "";
+        return (value != null) ? value : "";
     }
 
     public void set(String value) {
