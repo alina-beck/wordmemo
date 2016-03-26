@@ -8,6 +8,8 @@ import android.text.TextWatcher;
 import android.util.Pair;
 import android.widget.EditText;
 
+import java.util.Objects;
+
 import app.wordmemo.R;
 
 public class BindableString extends BaseObservable {
@@ -18,7 +20,7 @@ public class BindableString extends BaseObservable {
     }
 
     public void set(String value) {
-        if (!this.value.equals(value)) {
+        if (!Objects.equals(this.value, value)) {
             this.value = value;
             notifyChange();
         }
