@@ -17,9 +17,7 @@ public class AddWordActivity extends AppCompatActivity {
             if (savedInstanceState != null) {
                 return;
             }
-
             AddWordFragment addWordFragment = new AddWordFragment();
-
             getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, addWordFragment).commit();
         }
     }
