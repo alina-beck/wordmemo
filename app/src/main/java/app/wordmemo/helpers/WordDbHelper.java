@@ -1,4 +1,4 @@
-package app.wordmemo.managers;
+package app.wordmemo.helpers;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
