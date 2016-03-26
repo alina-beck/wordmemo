@@ -20,8 +20,6 @@ public class AddWordActivity extends AppCompatActivity implements AddWordFragmen
     @Override
     public void onSaveWord() {
         AddWordFragment newAddWordFragment = new AddWordFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newAddWordFragment)
-                .addToBackStack(null).commit();
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newAddWordFragment).commit();
     }
 }
