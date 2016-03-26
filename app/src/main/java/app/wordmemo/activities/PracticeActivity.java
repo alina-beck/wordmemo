@@ -48,16 +48,6 @@ public class PracticeActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void validateUserTranslation () {
-        EditText editText = (EditText) findViewById(R.id.userTranslation);
-        String userTranslation = editText.getText().toString();
-        String validTranslation = currentDueWord.getTranslation();
-
-        boolean isTranslationRight = userTranslation.equalsIgnoreCase(validTranslation);
-
-        dueWords.remove(currentDueWord);
-    }
-
     public void fillDataBase () {
         Calendar past = Calendar.getInstance();
         past.add(Calendar.DATE, -3);
@@ -65,9 +55,9 @@ public class PracticeActivity extends AppCompatActivity {
         WordDAO wd = WordDAO.getInstance(this);
         wd.open();
 
-        wd.insertWord(new Word(-1, "gestern", "igår", past));
-        wd.insertWord(new Word(-1, "Dienstag", "tisdag", past));
-        wd.insertWord(new Word(-1, "Hallo", "Hej", past));
+        wd.insertWord(new Word(-1, "gestern", "igår", 1, past));
+        wd.insertWord(new Word(-1, "Dienstag", "tisdag", 1, past));
+        wd.insertWord(new Word(-1, "Hallo", "Hej", 1, past));
 
         wd.close();
     }
