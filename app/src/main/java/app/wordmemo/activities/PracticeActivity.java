@@ -72,18 +72,14 @@ public class PracticeActivity extends AppCompatActivity
     @Override
     public void showNextDueWord () {
         if (dueWords.size() == 0) {
-            displayDoneFragment();
+            PracticeDoneFragment practiceDoneFragment = new PracticeDoneFragment(); // new because no args passed on
+            replaceFragment(practiceDoneFragment);
             return;
         }
         currentWord = dueWords.get(new Random().nextInt(dueWords.size()));
 
         PracticeInputFragment practiceInputFragment = PracticeInputFragment.getInstance(currentWord);
         replaceFragment(practiceInputFragment);
-    }
-
-    private void displayDoneFragment () {
-        PracticeDoneFragment practiceDoneFragment = new PracticeDoneFragment(); // new because no args passed on
-        replaceFragment(practiceDoneFragment);
     }
 
     private void replaceFragment (Fragment fragment) {
