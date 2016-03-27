@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ public class PracticeInputFragment extends Fragment
     private static final String ARG_PARAM1 = "param1";
     private FragmentPracticeInputBinding binding;
     private Word currentWord;
+    private Context context;
 
     public interface OnSubmitUserTranslationListener {
         void onSubmitUserTranslation(boolean isTranslationCorrect);
@@ -45,12 +47,14 @@ public class PracticeInputFragment extends Fragment
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        this.context = context;
         callback = (OnSubmitUserTranslationListener) context;
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+        this.context = activity.getBaseContext();
         callback = (OnSubmitUserTranslationListener) activity;
     }
 
@@ -88,6 +92,10 @@ public class PracticeInputFragment extends Fragment
 
     @Override
     public void onClick (View view) {
+        // hide the keyboard
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(binding.getRoot().getWindowToken(), 0);
+
         checkUserTranslation();
     }
 
