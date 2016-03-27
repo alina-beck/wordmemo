@@ -1,15 +1,15 @@
 package app.wordmemo.activities;
 
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
 import app.wordmemo.R;
+import app.wordmemo.fragments.PracticeDoneFragment;
 import app.wordmemo.fragments.PracticeInputFragment;
 import app.wordmemo.fragments.PracticeResultFragment;
 import app.wordmemo.managers.WordDAO;
@@ -70,7 +70,7 @@ public class PracticeActivity extends AppCompatActivity
     private void showNextDueWord () {
         dueWords.remove(currentWord);
         if (dueWords.size() == 0) {
-            // TODO: Insert Fragment that shows "no more words today"
+            displayDoneFragment();
             return;
         }
         currentWord = dueWords.get(new Random().nextInt(dueWords.size()));
@@ -79,6 +79,14 @@ public class PracticeActivity extends AppCompatActivity
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.practice_container, practiceInputFragment);
+        fragmentTransaction.commit();
+    }
+
+    private void displayDoneFragment () {
+        PracticeDoneFragment practiceDoneFragment = new PracticeDoneFragment(); // new because no args passed on
+
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.practice_container, practiceDoneFragment);
         fragmentTransaction.commit();
     }
 
