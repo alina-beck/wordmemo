@@ -28,9 +28,6 @@ public class PracticeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice);
 
-        // TODO: replace when app is distributed
-        fillDataBase();
-
         wd.open();
         dueWords = wd.fetchDueWords();
         wd.close();
@@ -47,23 +44,6 @@ public class PracticeActivity extends AppCompatActivity
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.practice_container, practiceInputFragment);
         fragmentTransaction.commit();
-    }
-
-    public void fillDataBase () {
-        Calendar past = Calendar.getInstance();
-        past.add(Calendar.DATE, -3);
-
-        wd.open();
-
-        wd.insertWord(new Word(-1, "gestern", "igår", 1, past));
-        wd.insertWord(new Word(-1, "Dienstag", "tisdag", 1, past));
-        wd.insertWord(new Word(-1, "Hallo", "Hej", 1, past));
-        wd.insertWord(new Word(-1, "Huhu", "Tja", 1, past));
-        wd.insertWord(new Word(-1, "Alina", "Alex", 1, past));
-        wd.insertWord(new Word(-1, "Wow, es funktioniert", "...Oder auch nicht", 1, past));
-        wd.insertWord(new Word(-1, "Naja", "Egal", 1, past));
-
-        wd.close();
     }
 
     /**
