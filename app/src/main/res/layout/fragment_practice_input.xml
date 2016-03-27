@@ -29,10 +29,13 @@
         />
 
         <EditText
+            android:id="@+id/input_user_translation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="32sp"
             android:hint="@string/hint_user_translation"
+            android:imeOptions="actionDone"
+            android:inputType="textVisiblePassword"
             app:binding="@{userTranslation}"
         />
 

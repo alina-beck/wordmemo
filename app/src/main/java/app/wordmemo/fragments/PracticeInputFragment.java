@@ -5,17 +5,22 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import app.wordmemo.R;
 import app.wordmemo.databinding.FragmentPracticeInputBinding;
 import app.wordmemo.models.Word;
 import app.wordmemo.utils.BindableString;
 
-public class PracticeInputFragment extends Fragment implements View.OnClickListener {
+public class PracticeInputFragment extends Fragment
+        implements View.OnClickListener, TextView.OnEditorActionListener {
     private OnSubmitUserTranslationListener callback;
     private static final String ARG_PARAM1 = "param1";
     private FragmentPracticeInputBinding binding;
@@ -75,12 +80,25 @@ public class PracticeInputFragment extends Fragment implements View.OnClickListe
         Button button = (Button) view.findViewById(R.id.submit_user_translation);
         button.setOnClickListener(this);
 
+        EditText editText = (EditText) view.findViewById(R.id.input_user_translation);
+        editText.setOnEditorActionListener(this);
+
         return view;
     }
 
     @Override
     public void onClick (View view) {
         checkUserTranslation();
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        boolean isHandled = false;
+        if (actionId == EditorInfo.IME_ACTION_DONE) {
+            onClick(v);
+            isHandled = true;
+        }
+        return isHandled;
     }
 
     public void checkUserTranslation () {
