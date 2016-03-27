@@ -1,5 +1,6 @@
 package app.wordmemo.activities;
 
+import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -62,9 +63,7 @@ public class PracticeActivity extends AppCompatActivity
         // open the result fragment
         PracticeResultFragment resultFragment = PracticeResultFragment.getInstance(currentWord, isTranslationCorrect);
 
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.practice_container, resultFragment);
-        fragmentTransaction.commit();
+        replaceFragment(resultFragment);
     }
 
     /**
@@ -79,17 +78,17 @@ public class PracticeActivity extends AppCompatActivity
         currentWord = dueWords.get(new Random().nextInt(dueWords.size()));
 
         PracticeInputFragment practiceInputFragment = PracticeInputFragment.getInstance(currentWord);
-
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.practice_container, practiceInputFragment);
-        fragmentTransaction.commit();
+        replaceFragment(practiceInputFragment);
     }
 
     private void displayDoneFragment () {
         PracticeDoneFragment practiceDoneFragment = new PracticeDoneFragment(); // new because no args passed on
+        replaceFragment(practiceDoneFragment);
+    }
 
+    private void replaceFragment (Fragment fragment) {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.practice_container, practiceDoneFragment);
+        fragmentTransaction.replace(R.id.practice_container, fragment);
         fragmentTransaction.commit();
     }
 }
