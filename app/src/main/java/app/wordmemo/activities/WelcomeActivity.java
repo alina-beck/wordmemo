@@ -22,7 +22,7 @@ public class WelcomeActivity extends AppCompatActivity {
         // TODO: replace when app is distributed
         fillDataBase();
         
-        getSupportFragmentManager().beginTransaction().add(R.id.menu_fragment_container, new MenuFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container_welcome, new MenuFragment()).commit();
 
     }
 

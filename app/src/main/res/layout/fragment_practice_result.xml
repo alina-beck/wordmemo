@@ -1,41 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
         <variable
-            name="currentWord"
+            name="boundCurrentWord"
             type="app.wordmemo.models.Word" />
     </data>
+
     <LinearLayout
+        tools:context=".fragments/PracticeResultFragment"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        tools:context=".fragments/PracticeResultFragment">
+        android:gravity="center_horizontal">
 
         <TextView
+            android:text="@{boundCurrentWord.original}"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="32sp"
-            android:padding="20dp"
             android:layout_marginTop="100dp"
+            android:padding="20dp"
             android:background="@color/colorPrimary"
-            android:text="@{currentWord.original}"/>
+            android:textSize="32sp"/>
 
         <TextView
+            android:text="@{boundCurrentWord.translation}"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="32sp"
-            android:padding="20dp"
             android:layout_marginTop="100dp"
+            android:padding="20dp"
             android:background="@color/colorPrimary"
-            android:text="@{currentWord.translation}"/>
+            android:textSize="32sp"/>
 
         <Button
-            android:id="@+id/submit_practice_result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_ok"/>
+            android:id="@+id/button_continue_practice"
+            android:text="@string/button_ok"
 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </layout>

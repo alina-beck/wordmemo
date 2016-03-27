@@ -3,7 +3,12 @@
     <item name="bound_observable" type="id" />
 
     <string name="app_name">WordMemo</string>
+    <string name="button_start_practice">Start Practice</string>
+    <string name="button_add_words">Add Words</string>
     <string name="button_ok">OK</string>
+    <string name="button_save">Save</string>
     <string name="hint_user_translation">Your translation</string>
+    <string name="hint_enter_original">Enter original</string>
+    <string name="hint_enter_translation">Enter translation</string>
     <string name="practice_done">Congratulations! You\'re done for today.</string>
 </resources>

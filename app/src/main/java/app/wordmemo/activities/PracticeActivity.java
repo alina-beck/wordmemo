@@ -5,7 +5,6 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
@@ -43,7 +42,7 @@ public class PracticeActivity extends AppCompatActivity
         PracticeInputFragment practiceInputFragment = PracticeInputFragment.getInstance(currentWord);
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.practice_container, practiceInputFragment);
+        fragmentTransaction.add(R.id.container_practice, practiceInputFragment);
         fragmentTransaction.commit();
     }
 
@@ -84,7 +83,7 @@ public class PracticeActivity extends AppCompatActivity
 
     private void replaceFragment (Fragment fragment) {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.practice_container, fragment);
+        fragmentTransaction.replace(R.id.container_practice, fragment);
         fragmentTransaction.commit();
     }
 }

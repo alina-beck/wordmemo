@@ -4,39 +4,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="inputOriginal"
+            name="boundInputOriginal"
             type="app.wordmemo.utils.BindableString"/>
         <variable
-            name="inputTranslation"
+            name="boundInputTranslation"
             type="app.wordmemo.utils.BindableString"/>
     </data>
+
     <LinearLayout
+        tools:context=".fragments.AddWordFragment"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center"
-        tools:context=".fragments.AddWordFragment">
+        android:gravity="center">
 
         <EditText
+            app:binding="@{boundInputOriginal}"
+            android:hint="@string/hint_enter_original"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="32sp"
-            android:hint="Enter Original"
-            app:binding="@{inputOriginal}"/>
+            android:textSize="32sp"/>
 
         <EditText
+            app:binding="@{boundInputTranslation}"
+            android:hint="@string/hint_enter_translation"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="32sp"
-            android:hint="Enter Translation"
-            app:binding="@{inputTranslation}"/>
+            android:textSize="32sp"/>
 
         <Button
-            android:id="@+id/save_word_button"
+            android:id="@+id/button_save_word"
+            android:text="@string/button_save"
+
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save Word"/>
-
+            android:layout_height="wrap_content"/>
     </LinearLayout>
-
 </layout>

@@ -70,7 +70,7 @@ public class PracticeResultFragment extends Fragment implements View.OnClickList
         FragmentPracticeResultBinding binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_practice_result, container, false);
 
-        binding.setCurrentWord(currentWord);
+        binding.setBoundCurrentWord(currentWord);
 
         View view = binding.getRoot();
 
@@ -85,7 +85,7 @@ public class PracticeResultFragment extends Fragment implements View.OnClickList
 
         view.setBackgroundColor(resultColor);
 
-        Button button = (Button) view.findViewById(R.id.submit_practice_result);
+        Button button = (Button) view.findViewById(R.id.button_continue_practice);
         button.setOnClickListener(this);
 
         return view;

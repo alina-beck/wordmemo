@@ -50,12 +50,12 @@ public class AddWordFragment extends Fragment implements View.OnClickListener {
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_word, container, false);
 
-        binding.setInputOriginal(new BindableString());
-        binding.setInputTranslation(new BindableString());
+        binding.setBoundInputOriginal(new BindableString());
+        binding.setBoundInputTranslation(new BindableString());
 
         View view = binding.getRoot();
 
-        Button button = (Button) view.findViewById(R.id.save_word_button);
+        Button button = (Button) view.findViewById(R.id.button_save_word);
         button.setOnClickListener(this);
 
         return view;
@@ -66,8 +66,8 @@ public class AddWordFragment extends Fragment implements View.OnClickListener {
         WordDAO wd = WordDAO.getInstance(context);
         wd.open();
 
-        String originalInput = binding.getInputOriginal().get();
-        String translationInput = binding.getInputTranslation().get();
+        String originalInput = binding.getBoundInputOriginal().get();
+        String translationInput = binding.getBoundInputTranslation().get();
 
         Word word = new Word(originalInput, translationInput);
 

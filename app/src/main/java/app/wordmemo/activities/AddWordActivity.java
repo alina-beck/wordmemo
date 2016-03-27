@@ -14,12 +14,12 @@ public class AddWordActivity extends AppCompatActivity implements AddWordFragmen
         setContentView(R.layout.activity_add_word);
 
         AddWordFragment addWordFragment = new AddWordFragment(); // no instance because no args are passed on
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, addWordFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container_add_word, addWordFragment).commit();
     }
 
     @Override
     public void onSaveWord() {
         AddWordFragment newAddWordFragment = new AddWordFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newAddWordFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container_add_word, newAddWordFragment).commit();
     }
 }

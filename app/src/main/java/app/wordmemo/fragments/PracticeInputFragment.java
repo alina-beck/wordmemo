@@ -76,12 +76,12 @@ public class PracticeInputFragment extends Fragment
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_practice_input, container, false);
 
-        binding.setCurrentWord(currentWord);
-        binding.setUserTranslation(new BindableString());
+        binding.setBoundCurrentWord(currentWord);
+        binding.setBoundUserTranslation(new BindableString());
 
         View view = binding.getRoot();
 
-        Button button = (Button) view.findViewById(R.id.submit_user_translation);
+        Button button = (Button) view.findViewById(R.id.button_submit_translation);
         button.setOnClickListener(this);
 
         EditText editText = (EditText) view.findViewById(R.id.input_user_translation);
@@ -110,7 +110,7 @@ public class PracticeInputFragment extends Fragment
     }
 
     public void checkUserTranslation () {
-        String userTranslationLC = binding.getUserTranslation().get();
+        String userTranslationLC = binding.getBoundUserTranslation().get();
         String correctTranslationLC = currentWord.getTranslation();
 
         boolean isTranslationCorrect = userTranslationLC.equalsIgnoreCase(correctTranslationLC);
