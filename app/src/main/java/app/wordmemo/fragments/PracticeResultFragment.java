@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +41,18 @@ public class PracticeResultFragment extends Fragment implements View.OnClickList
     }
 
     @Override
+    public void onAttach (Context context) {
+        super.onAttach(context);
+        callback = (OnSubmit) context;
+    }
+
+    @Override
+    public void onAttach (Activity activity) {
+        super.onAttach(activity);
+        callback = (OnSubmit) activity;
+    }
+
+    @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -61,6 +75,17 @@ public class PracticeResultFragment extends Fragment implements View.OnClickList
 
         View view = binding.getRoot();
 
+        int resultColor;
+
+        if (isCorrect) {
+            resultColor = ContextCompat.getColor(getActivity().getBaseContext(), R.color.colorPrimaryDark);
+        }
+        else {
+            resultColor = ContextCompat.getColor(getActivity().getBaseContext(), R.color.colorAccent);
+        }
+
+        view.setBackgroundColor(resultColor);
+
         Button button = (Button) view.findViewById(R.id.submit_practice_result);
         button.setOnClickListener(this);
 
@@ -68,15 +93,8 @@ public class PracticeResultFragment extends Fragment implements View.OnClickList
     }
 
     @Override
-    public void onAttach (Context context) {
-        super.onAttach(context);
-        callback = (OnSubmit) context;
-    }
-
-    @Override
-    public void onAttach (Activity activity) {
-        super.onAttach(activity);
-        callback = (OnSubmit) activity;
+    public void onClick (View view) {
+        callback.onSubmit();
     }
 
     @Override
@@ -85,8 +103,4 @@ public class PracticeResultFragment extends Fragment implements View.OnClickList
         callback = null;
     }
 
-    @Override
-    public void onClick (View view) {
-        callback.onSubmit();
-    }
 }

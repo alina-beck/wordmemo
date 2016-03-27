@@ -38,6 +38,18 @@ public class PracticeInputFragment extends Fragment implements View.OnClickListe
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        callback = (OnSubmitUserTranslationListener) context;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        callback = (OnSubmitUserTranslationListener) activity;
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -67,24 +79,6 @@ public class PracticeInputFragment extends Fragment implements View.OnClickListe
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        callback = (OnSubmitUserTranslationListener) context;
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        callback = (OnSubmitUserTranslationListener) activity;
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        callback = null;
-    }
-
-    @Override
     public void onClick (View view) {
         checkUserTranslation();
     }
@@ -96,6 +90,11 @@ public class PracticeInputFragment extends Fragment implements View.OnClickListe
         boolean isTranslationCorrect = userTranslationLC.equalsIgnoreCase(correctTranslationLC);
 
         callback.onSubmitUserTranslation(isTranslationCorrect);
+    }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        callback = null;
     }
 }
