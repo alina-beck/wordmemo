@@ -16,14 +16,14 @@ import app.wordmemo.databinding.FragmentPracticeResultBinding;
 import app.wordmemo.models.Word;
 
 public class PracticeResultFragment extends Fragment implements View.OnClickListener{
-    private OnSubmit callback;
+    private ShowNextDueWord callback;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private Word currentWord;
     private boolean isCorrect;
 
-    public interface OnSubmit {
-        void onSubmit ();
+    public interface ShowNextDueWord {
+        void showNextDueWord();
     }
 
     public PracticeResultFragment() {
@@ -42,13 +42,13 @@ public class PracticeResultFragment extends Fragment implements View.OnClickList
     @Override
     public void onAttach (Context context) {
         super.onAttach(context);
-        callback = (OnSubmit) context;
+        callback = (ShowNextDueWord) context;
     }
 
     @Override
     public void onAttach (Activity activity) {
         super.onAttach(activity);
-        callback = (OnSubmit) activity;
+        callback = (ShowNextDueWord) activity;
     }
 
     @Override
@@ -93,7 +93,7 @@ public class PracticeResultFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onClick (View view) {
-        callback.onSubmit();
+        callback.showNextDueWord();
     }
 
     @Override

@@ -40,16 +40,17 @@ public class WordDAO {
     }
 
     public boolean insertWord (Word word) {
-        ContentValues values = new ContentValues();
-        values.put(WordDbHelper.COLUMN_ORIGINAL, word.getOriginal());
-        values.put(WordDbHelper.COLUMN_TRANSLATION, word.getTranslation());
-        values.put(WordDbHelper.COLUMN_LEARNGROUP, word.getLearnGroup());
-        values.put(WordDbHelper.COLUMN_DUEDATE, DateUtil.formatDate(word.getDueDate()));
-
+        ContentValues values = prepareContentValues(word);
         long result = wordDatabase.insert(WordDbHelper.TABLE_WORDS, null, values);
 
         return result != -1;
+    }
 
+    public int updateWord (Word word) {
+        ContentValues values = prepareContentValues(word);
+        String whereClause = WordDbHelper.COLUMN_ID + '=' + word.getId();
+
+        return wordDatabase.update(WordDbHelper.TABLE_WORDS, values, whereClause, null);
     }
 
     public List<Word> fetchDueWords () {
@@ -60,16 +61,26 @@ public class WordDAO {
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            dueWords.add(cursorToWord(cursor));
+            dueWords.add(getWordFromCursor(cursor));
             cursor.moveToNext();
         }
 
         cursor.close();
         return dueWords;
-
     }
 
-    private Word cursorToWord(Cursor cursor) {
+    private ContentValues prepareContentValues (Word word) {
+        ContentValues values = new ContentValues();
+
+        values.put(WordDbHelper.COLUMN_ORIGINAL, word.getOriginal());
+        values.put(WordDbHelper.COLUMN_TRANSLATION, word.getTranslation());
+        values.put(WordDbHelper.COLUMN_LEARNGROUP, word.getLearnGroup());
+        values.put(WordDbHelper.COLUMN_DUEDATE, DateUtil.formatDate(word.getDueDate()));
+
+        return values;
+    }
+
+    private Word getWordFromCursor(Cursor cursor) {
         int id = cursor.getInt(0);
         String original = cursor.getString(1);
         String translation = cursor.getString(2);

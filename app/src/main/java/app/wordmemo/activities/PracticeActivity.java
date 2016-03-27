@@ -17,10 +17,11 @@ import app.wordmemo.models.Word;
 
 public class PracticeActivity extends AppCompatActivity
         implements PracticeInputFragment.OnSubmitUserTranslationListener,
-        PracticeResultFragment.OnSubmit {
+        PracticeResultFragment.ShowNextDueWord {
 
     private List<Word> dueWords;
     private Word currentWord;
+    private WordDAO wd = WordDAO.getInstance(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,6 @@ public class PracticeActivity extends AppCompatActivity
         // TODO: replace when app is distributed
         fillDataBase();
 
-        WordDAO wd = WordDAO.getInstance(this);
         wd.open();
         dueWords = wd.fetchDueWords();
         wd.close();
@@ -53,7 +53,6 @@ public class PracticeActivity extends AppCompatActivity
         Calendar past = Calendar.getInstance();
         past.add(Calendar.DATE, -3);
 
-        WordDAO wd = WordDAO.getInstance(this);
         wd.open();
 
         wd.insertWord(new Word(-1, "gestern", "igår", 1, past));
@@ -67,8 +66,32 @@ public class PracticeActivity extends AppCompatActivity
         wd.close();
     }
 
-    private void showNextDueWord () {
+    /**
+     *  Called from PracticeInputFragment
+     */
+    @Override
+    public void onSubmitUserTranslation(boolean isTranslationCorrect) {
+        // remove and updating the currentWord
         dueWords.remove(currentWord);
+        currentWord.updateLearnGroup(isTranslationCorrect);
+
+        wd.open();
+        wd.updateWord(currentWord);
+        wd.close();
+
+        // open the result fragment
+        PracticeResultFragment resultFragment = PracticeResultFragment.getInstance(currentWord, isTranslationCorrect);
+
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.practice_container, resultFragment);
+        fragmentTransaction.commit();
+    }
+
+    /**
+     *  Called from PracticeResultFragment
+     */
+    @Override
+    public void showNextDueWord () {
         if (dueWords.size() == 0) {
             displayDoneFragment();
             return;
@@ -88,19 +111,5 @@ public class PracticeActivity extends AppCompatActivity
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.practice_container, practiceDoneFragment);
         fragmentTransaction.commit();
-    }
-
-    @Override
-    public void onSubmitUserTranslation(boolean isTranslationCorrect) {
-        PracticeResultFragment resultFragment = PracticeResultFragment.getInstance(currentWord, isTranslationCorrect);
-
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.practice_container, resultFragment);
-        fragmentTransaction.commit();
-    }
-
-    @Override
-    public void onSubmit () {
-        showNextDueWord();
     }
 }

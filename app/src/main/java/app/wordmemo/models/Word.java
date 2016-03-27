@@ -92,4 +92,8 @@ public class Word implements Parcelable {
     public Calendar getDueDate() {
         return dueDate;
     }
+
+    public int getId() {
+        return id;
+    }
 }
