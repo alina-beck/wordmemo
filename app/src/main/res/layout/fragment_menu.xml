@@ -10,12 +10,14 @@
     android:orientation="vertical">
 
     <Button
+        android:id="@+id/button_start_practice"
         android:text="@string/button_start_practice"
         android:onClick="startPractice"
 
         android:layout_width="200dp"
         android:layout_height="200dp"/>
     <Button
+        android:id="@+id/button_start_add_words"
         android:text="@string/button_add_words"
         android:onClick="startAddWord"
 
