@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/colorPrimary">
+    android:background="@color/orangePrimary">
 
     <TextView
         android:text="@string/practice_done"

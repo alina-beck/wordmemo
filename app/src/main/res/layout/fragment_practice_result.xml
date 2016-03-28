@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:padding="20dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/whitePrimary"
             android:textSize="32sp"/>
 
         <TextView
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:padding="20dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/whitePrimary"
             android:textSize="32sp"/>
 
         <Button

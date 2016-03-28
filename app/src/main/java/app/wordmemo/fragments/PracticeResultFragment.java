@@ -77,10 +77,10 @@ public class PracticeResultFragment extends Fragment implements View.OnClickList
         int resultColor;
 
         if (isCorrect) {
-            resultColor = ContextCompat.getColor(getActivity().getBaseContext(), R.color.colorPrimaryDark);
+            resultColor = ContextCompat.getColor(getActivity().getBaseContext(), R.color.greenPrimary);
         }
         else {
-            resultColor = ContextCompat.getColor(getActivity().getBaseContext(), R.color.colorAccent);
+            resultColor = ContextCompat.getColor(getActivity().getBaseContext(), R.color.redPrimary);
         }
 
         view.setBackgroundColor(resultColor);
