@@ -2,6 +2,7 @@ package app.wordmemo.activities;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.test.suitebuilder.annotation.SmallTest;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.*;
@@ -14,6 +15,7 @@ import org.junit.runner.RunWith;
 import app.wordmemo.R;
 
 @RunWith(AndroidJUnit4.class)
+@SmallTest
 public class WelcomeActivityTest {
 
     @Rule

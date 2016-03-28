@@ -5,8 +5,6 @@ import org.junit.Test;
 import java.util.Calendar;
 import static org.junit.Assert.*;
 
-import app.wordmemo.utils.DateUtil;
-
 public class DateUtilTest {
 
     @Test
